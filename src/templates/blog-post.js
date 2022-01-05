@@ -31,6 +31,11 @@ const BlogPostTemplate = ({ data, location }) => {
         />
         <hr />
         <footer>
+          <header style={{ marginBottom: "1rem" }}>
+            <Link className="header-link-home" to="/">
+              {siteTitle}
+            </Link>
+          </header>
           <Bio />
         </footer>
       </article>

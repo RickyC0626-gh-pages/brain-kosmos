@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Brain Kosmos`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Ricky Chon`,
+      summary: `who is based in New York, kickstarting his career in web development.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `My personal blog - writing about tech, hobbies, and topics I'm interested in to keep me sane.`,
+    siteUrl: `https://blog.rickychon.me`,
     social: {
-      twitter: `kylemathews`,
+      github: `RickyC0626`,
     },
   },
   plugins: [
@@ -79,7 +79,7 @@ module.exports = {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  url: encodeURI(site.siteMetadata.siteUrl + node.fields.slug),
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
                 })
@@ -105,7 +105,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "Brain Kosmos RSS Feed",
           },
         ],
       },
@@ -113,7 +113,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `Brain Kosmos`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
