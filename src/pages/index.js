@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
+import Footer from "../components/footer";
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -59,6 +60,7 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
+      <Footer />
     </Layout>
   )
 }
