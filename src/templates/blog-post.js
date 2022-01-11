@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <p style={{ display: 'grid', rowGap: '5px' }}>
             {post.frontmatter.date}
             <small style={{ display: 'flex', lineHeight: '16px'}}>
-              <FaClock style={{ marginRight: '4px' }}/> {post.fields.readingTime.text}
+              <FaClock style={{ marginRight: '4px' }}/> {post.fields?.readingTime.text}
             </small>
           </p>
         </header>
