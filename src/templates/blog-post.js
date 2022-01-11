@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
+import { FaClock } from "react-icons/fa"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -40,7 +41,12 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <CommentCount config={disqusConfig} placeholder={''} />
-          <p>{post.frontmatter.date}</p>
+          <p style={{ display: 'grid', rowGap: '5px' }}>
+            {post.frontmatter.date}
+            <small style={{ display: 'flex', lineHeight: '16px'}}>
+              <FaClock style={{ marginRight: '4px' }}/> {post.fields.readingTime.text}
+            </small>
+          </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -109,6 +115,11 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        readingTime {
+          text
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
