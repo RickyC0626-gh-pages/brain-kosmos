@@ -9,10 +9,12 @@ const Layout = ({ location, title, children }) => {
   const [theme, setTheme] = React.useState(null);
 
   React.useEffect(() => {
-    console.log('componentDidMount')
     setTheme(window.__theme);
   
-    window.__onThemeChange = () => setTheme(window.__theme);
+    window.__onThemeChange = () => {
+      setTheme(window.__theme);
+      document.dispatchEvent(new Event('themeChanged'));
+    };
   }, [theme]);
 
   const rootPath = `${__PATH_PREFIX__}/`

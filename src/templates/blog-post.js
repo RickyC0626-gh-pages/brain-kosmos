@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -9,6 +10,19 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const disqusConfig = {
+    url: `${location.href}`,
+    identifier: post.id,
+    title: post.frontmatter.title
+  }
+  
+  document.addEventListener('themeChanged', e => {
+    if(document.readyState === 'complete')
+      setTimeout(
+        () => window.DISQUS.reset({ reload: true, config: disqusConfig }),
+        500
+      );
+  })
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -23,6 +37,7 @@ const BlogPostTemplate = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <CommentCount config={disqusConfig} placeholder={''} />
           <p>{post.frontmatter.date}</p>
         </header>
         <section
@@ -52,19 +67,21 @@ const BlogPostTemplate = ({ data, location }) => {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                &larr; {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                {next.frontmatter.title} &rarr;
               </Link>
             )}
           </li>
         </ul>
       </nav>
+      <br /><hr /><br />
+      <Disqus config={disqusConfig} />
     </Layout>
   )
 }
