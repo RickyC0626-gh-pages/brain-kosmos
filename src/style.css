@@ -91,6 +91,30 @@ body.dark {
   --color-background: #181a1b;
 }
 
+html {
+  scrollbar-width: 8px;
+  scrollbar-color: var(--color-text);
+  overflow-x: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-background);
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
