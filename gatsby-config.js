@@ -113,7 +113,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Brain Kosmos RSS Feed",
+            title: "Brain Kosmos",
           },
         ],
       },
