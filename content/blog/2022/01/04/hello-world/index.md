@@ -2,6 +2,8 @@
 title: Hello World
 date: "2022-01-04"
 description: A Big Bang occurs in the Kosmos.
+slug: hello-world
+tags: [skwash, second-brain, vibrainium]
 ---
 
 Hello there! This is my first blog post. I'm not exactly sure how I will use this blog or how to write posts, but hopefully I will publish content on various fields that I'm interested in: tech, games, sci-fi, history, languages, music, maps, and much more.

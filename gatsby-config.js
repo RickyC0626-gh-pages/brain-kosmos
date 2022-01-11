@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-slug`,
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
