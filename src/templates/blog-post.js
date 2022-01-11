@@ -16,7 +16,7 @@ const BlogPostTemplate = ({ data, location }) => {
     title: post.frontmatter.title
   }
   
-  document.addEventListener('themeChanged', e => {
+  document?.addEventListener('themeChanged', e => {
     if(document.readyState === 'complete')
       setTimeout(
         () => window.DISQUS.reset({ reload: true, config: disqusConfig }),
