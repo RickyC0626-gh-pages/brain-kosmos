@@ -13,7 +13,7 @@ const Layout = ({ location, title, children }) => {
   
     window.__onThemeChange = () => {
       setTheme(window.__theme);
-      document?.dispatchEvent(new Event('themeChanged'));
+      document.dispatchEvent(new Event('themeChanged'));
     };
   }, [theme]);
 
