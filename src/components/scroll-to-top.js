@@ -11,7 +11,9 @@ const ScrollToTop = () => {
 
   const scrollToTop = () => window.scrollTo({ top: 0, scrolling: 'smooth' });
 
-  window.addEventListener('scroll', toggleVisible);
+  React.useEffect(() => {
+    window.addEventListener('scroll', toggleVisible);
+  });
 
   return (
     <button
