@@ -1,14 +1,14 @@
 const path = require(`path`)
-const fs = require("fs");
-const moment = require("moment");
+const moment = require("moment-timezone");
 
-exports.onCreateNode = ({ actions: { createNodeField }, node }) => {
+exports.onCreateNode = ({ getNode, actions: { createNodeField }, node }) => {
   const type = node.internal.type;
   if(type === 'MarkdownRemark') {
+    const fileNode = getNode(node.parent);
     createNodeField({
       node,
       name: `modifiedTime`,
-      value: `${moment(fs.statSync(node.fileAbsolutePath).mtime).format('MMMM DD, YYYY HH:mm')}`
+      value: `${moment.tz(fileNode.mtime, 'America/New_York').format('MMMM DD, YYYY HH:mm z')}`
     })
   }
 }
