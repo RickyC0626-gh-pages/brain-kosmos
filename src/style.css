@@ -489,6 +489,6 @@ a:focus {
   border-radius: 50%;
 }
 
-.scroll-to-top.icon {
+.scroll-to-top svg {
   color: var(--color-background);
 }
