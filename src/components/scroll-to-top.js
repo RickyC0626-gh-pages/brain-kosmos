@@ -22,7 +22,7 @@ const ScrollToTop = () => {
         transition: 'transform 250ms ease-in-out'
       }}
     >
-      <FiArrowUp className="icon" size="2rem" />
+      <FiArrowUp size="2rem" />
     </button>
   )
 }
