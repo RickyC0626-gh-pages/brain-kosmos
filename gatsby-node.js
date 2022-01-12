@@ -1,5 +1,17 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const fs = require("fs");
+const moment = require("moment");
+
+exports.onCreateNode = ({ actions: { createNodeField }, node }) => {
+  const type = node.internal.type;
+  if(type === 'MarkdownRemark') {
+    createNodeField({
+      node,
+      name: `modifiedTime`,
+      value: `${moment(fs.statSync(node.fileAbsolutePath).mtime).format('MMMM DD, YYYY HH:mm')}`
+    })
+  }
+}
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -19,6 +31,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+              modifiedTime
             }
           }
         }
@@ -97,6 +110,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Fields {
       slug: String
+      modifiedTime: String
     }
   `)
 }
