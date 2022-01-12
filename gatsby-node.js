@@ -1,5 +1,4 @@
 const path = require(`path`)
-const moment = require("moment-timezone");
 
 exports.onCreateNode = ({ getNode, actions: { createNodeField }, node }) => {
   const type = node.internal.type;
@@ -8,7 +7,7 @@ exports.onCreateNode = ({ getNode, actions: { createNodeField }, node }) => {
     createNodeField({
       node,
       name: `lastUpdated`,
-      value: `${moment.tz(fileNode.fields?.gitLogLatestDate, 'America/New_York').format('MMMM DD, YYYY')}`
+      value: `${fileNode.fields?.gitLogLatestDate}`
     })
   }
 }
@@ -109,7 +108,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Fields {
       slug: String
-      lastUpdated: String
+      lastUpdated: Date @dateformat
     }
   `)
 }
