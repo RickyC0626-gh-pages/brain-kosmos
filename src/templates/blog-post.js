@@ -44,16 +44,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+        <p>
+          <strong><BsCalendar3 className="icon" /> Last Updated: </strong><time>{post.fields.lastUpdated}</time>
+        </p>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <section>
-          <p>
-            <strong><BsCalendar3 className="icon" /> Last Updated: </strong>
-            <time>{post.fields.modifiedTime}</time>
-          </p>
-        </section>
         <hr />
         <footer>
           <header style={{ marginBottom: "1rem" }}>
@@ -120,7 +117,7 @@ export const pageQuery = graphql`
         description
       }
       fields {
-        modifiedTime
+        lastUpdated
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
