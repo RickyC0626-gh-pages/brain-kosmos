@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
+import { BsCalendar3 } from "react-icons/bs"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -21,7 +22,7 @@ const BlogPostTemplate = ({ data, location }) => {
     document.addEventListener('themeChanged', e => {
       if(document.readyState === 'complete')
         setTimeout(
-          () => window.DISQUS.reset({ reload: true, config: disqusConfig }),
+          () => window.DISQUS?.reset({ reload: true, config: disqusConfig }),
           500
         );
     })
@@ -38,15 +39,21 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
+        <CommentCount config={disqusConfig} placeholder={''} />
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <CommentCount config={disqusConfig} placeholder={''} />
           <p>{post.frontmatter.date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        <section>
+          <p>
+            <strong><BsCalendar3 className="icon" /> Last Updated: </strong>
+            <time>{post.fields.modifiedTime}</time>
+          </p>
+        </section>
         <hr />
         <footer>
           <header style={{ marginBottom: "1rem" }}>
@@ -111,6 +118,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        modifiedTime
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

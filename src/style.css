@@ -492,3 +492,11 @@ a:focus {
 .scroll-to-top svg {
   color: var(--color-background);
 }
+
+.icon {
+  display: inline-block;
+  font-size: inherit;
+  color: inherit;
+  vertical-align: -0.125rem;
+  fill: currentColor;
+}

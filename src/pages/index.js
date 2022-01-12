@@ -46,8 +46,8 @@ const BlogIndex = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small style={{ display: 'flex', lineHeight: '13px' }}>
-                    {post.frontmatter.date} &bull;<FaClock style={{ margin: '0 4px' }}/>{post.fields.readingTime.text}
+                  <small>
+                    {post.frontmatter.date} &bull; <FaClock className="icon" /> {post.fields.readingTime.text}
                   </small>
                 </header>
                 <section>
