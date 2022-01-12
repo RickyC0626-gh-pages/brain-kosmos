@@ -5,6 +5,7 @@ import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import ScrollToTop from "../components/scroll-to-top"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -84,6 +85,7 @@ const BlogPostTemplate = ({ data, location }) => {
       </nav>
       <br /><hr /><br />
       <Disqus config={disqusConfig} />
+      <ScrollToTop />
     </Layout>
   )
 }
