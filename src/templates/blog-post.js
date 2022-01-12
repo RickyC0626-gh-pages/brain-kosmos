@@ -117,7 +117,7 @@ export const pageQuery = graphql`
         description
       }
       fields {
-        lastUpdated
+        lastUpdated(formatString: "MMMM DD, YYYY")
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
