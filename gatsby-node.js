@@ -7,8 +7,8 @@ exports.onCreateNode = ({ getNode, actions: { createNodeField }, node }) => {
     const fileNode = getNode(node.parent);
     createNodeField({
       node,
-      name: `modifiedTime`,
-      value: `${moment.tz(fileNode.mtime, 'America/New_York').format('MMMM DD, YYYY HH:mm z')}`
+      name: `lastUpdated`,
+      value: `${moment.tz(fileNode.fields?.gitLogLatestDate, 'America/New_York').format('MMMM DD, YYYY')}`
     })
   }
 }
@@ -31,7 +31,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
-              modifiedTime
             }
           }
         }
@@ -110,7 +109,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Fields {
       slug: String
-      modifiedTime: String
+      lastUpdated: String
     }
   `)
 }
