@@ -2,21 +2,27 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import { BsCalendar3 } from "react-icons/bs"
+import { FaEye } from "react-icons/fa"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import ScrollToTop from "../components/scroll-to-top"
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const disqusConfig = {
-    url: `${location.href}`,
+    url: location.href,
     identifier: post.id,
     title: post.frontmatter.title
   }
+  const goatId = isProd ? 'brain-kosmos' : 'dev-brain-kosmos';
+  const goatUrl = `https://${goatId}.goatcounter.com/counter/${post.fields.slug}.json`;
+  const [views, setViews] = React.useState(-1);
   
   React.useEffect(() => {
     document.addEventListener('themeChanged', e => {
@@ -26,7 +32,12 @@ const BlogPostTemplate = ({ data, location }) => {
           500
         );
     })
-  })
+
+    fetch(goatUrl)
+      .then(res => res.json())
+      .then(data => setViews(data.count))
+      .catch(err => console.error(err));
+  });
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -42,11 +53,15 @@ const BlogPostTemplate = ({ data, location }) => {
         <CommentCount config={disqusConfig} placeholder={''} />
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <div>
+            <p>{post.frontmatter.date}</p>
+            <p style={{ fontSize: '1rem' }}>
+              <b><BsCalendar3 className="icon" /> Last Updated</b> &mdash; {post.fields.lastUpdated}
+              <br />
+              {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views.toLocaleString('en-US')} views</>}
+            </p>
+          </div>
         </header>
-        <p>
-          <strong><BsCalendar3 className="icon" /> Last Updated: </strong><time>{post.fields.lastUpdated}</time>
-        </p>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -118,6 +133,7 @@ export const pageQuery = graphql`
       }
       fields {
         lastUpdated(formatString: "MMMM DD, YYYY")
+        slug
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

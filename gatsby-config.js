@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
   siteMetadata: {
     title: `Brain Kosmos`,
@@ -12,6 +14,20 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-goatcounter`,
+      options: {
+        code: isProd ? `brain-kosmos` : `dev-brain-kosmos`,
+        exclude: [],
+        pageTransitionDelay: 0,
+        head: true,
+        pixel: false,
+        allowLocal: true,
+        localStorageKey: 'skipgc',
+        referrer: false,
+        urlCleanup: false,
+      },
+    },
     `gatsby-plugin-slug`,
     {
       resolve: `gatsby-plugin-disqus`,
@@ -65,12 +81,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
