@@ -16,11 +16,12 @@ const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const disqusConfig = {
-    url: `${location.href}`,
+    url: location.href,
     identifier: post.id,
     title: post.frontmatter.title
   }
   const goatId = isProd ? 'brain-kosmos' : 'dev-brain-kosmos';
+  const goatUrl = `https://${goatId}.goatcounter.com/counter/${post.fields.slug}.json`;
   const [views, setViews] = React.useState(-1);
   
   React.useEffect(() => {
@@ -32,11 +33,11 @@ const BlogPostTemplate = ({ data, location }) => {
         );
     })
 
-    fetch(`https://${goatId}.goatcounter.com/counter/${post.fields.slug}.json`)
+    fetch(goatUrl)
       .then(res => res.json())
       .then(data => setViews(data.count))
       .catch(err => console.error(err));
-  })
+  });
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -57,7 +58,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <p style={{ fontSize: '1rem' }}>
               <b><BsCalendar3 className="icon" /> Last Updated</b> &mdash; {post.fields.lastUpdated}
               <br />
-              {views < 0 ? <><b><FaEye className="icon" /> Views</b> &mdash; {views} visitors</> : null}
+              {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views} views</>}
             </p>
           </div>
         </header>
