@@ -58,7 +58,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <p style={{ fontSize: '1rem' }}>
               <b><BsCalendar3 className="icon" /> Last Updated</b> &mdash; {post.fields.lastUpdated}
               <br />
-              {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views} views</>}
+              {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views.toLocaleString('en-US')} views</>}
             </p>
           </div>
         </header>
