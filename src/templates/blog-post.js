@@ -62,6 +62,7 @@ const BlogPostTemplate = ({ data, location }) => {
               <br />
               {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views.toLocaleString('en-US')} views</>}
             </p>
+            {tags ?
             <ul className="tag-list">
               <b><FaTags className="icon" /> Tags</b> &mdash;{' '}
               {tags.map(tag => (
@@ -70,6 +71,7 @@ const BlogPostTemplate = ({ data, location }) => {
                 </li>
               ))}
             </ul>
+            : null}
           </div>
         </header>
         <section
