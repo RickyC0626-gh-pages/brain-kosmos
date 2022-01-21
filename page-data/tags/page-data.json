@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-tags-js",
+    "path": "/tags/",
+    "result": {"data":{"allMarkdownRemark":{"group":[{"fieldValue":"css","totalCount":1},{"fieldValue":"css-grid","totalCount":1},{"fieldValue":"frontend","totalCount":1},{"fieldValue":"responsive-design","totalCount":1},{"fieldValue":"second-brain","totalCount":1},{"fieldValue":"skwash","totalCount":1},{"fieldValue":"vibrainium","totalCount":1}]},"site":{"siteMetadata":{"title":"Brain Kosmos"}}},"pageContext":{}},
+    "staticQueryHashes": ["3589320610"]}

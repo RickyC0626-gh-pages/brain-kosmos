@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tags-js",
+    "path": "/tags/second-brain/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/hello-world"},"frontmatter":{"title":"Hello World"}}}]},"site":{"siteMetadata":{"title":"Brain Kosmos"}}},"pageContext":{"tag":"second-brain"}},
+    "staticQueryHashes": ["3589320610"]}

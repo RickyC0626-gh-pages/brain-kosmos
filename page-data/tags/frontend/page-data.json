@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tags-js",
+    "path": "/tags/frontend/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/responsive-layouts-with-css-grid"},"frontmatter":{"title":"Responsive Layouts with CSS Grid"}}}]},"site":{"siteMetadata":{"title":"Brain Kosmos"}}},"pageContext":{"tag":"frontend"}},
+    "staticQueryHashes": ["3589320610"]}

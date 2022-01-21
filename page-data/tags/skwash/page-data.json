@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tags-js",
+    "path": "/tags/skwash/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/hello-world"},"frontmatter":{"title":"Hello World"}}}]},"site":{"siteMetadata":{"title":"Brain Kosmos"}}},"pageContext":{"tag":"skwash"}},
+    "staticQueryHashes": ["3589320610"]}
