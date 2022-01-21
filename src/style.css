@@ -359,6 +359,35 @@ a:focus {
   margin: var(--spacing-0);
 }
 
+.blog-post .tag-list:before {
+  content: attr(ariaLabel);
+  font-size: var(--fontSize-1);
+  font-weight: var(--fontWeight-bold);
+}
+
+.blog-post .tag-list {
+  line-height: var(--spacing-8);
+  hyphens: auto;
+}
+
+.blog-post .tag {
+  display: inline;
+  list-style: none;
+  font-size: var(--fontSize-0);
+  border: 1px solid var(--color-accent);
+  padding: var(--spacing-1) var(--spacing-2);
+  margin-right: var(--spacing-1);
+  border-radius: 12px;
+}
+
+.blog-post .tag-link:link {
+  text-decoration: none;
+}
+
+.blog-post .tag-link:hover {
+  text-decoration: underline;
+}
+
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);
 }

@@ -3,7 +3,7 @@ title: Responsive Layouts with CSS Grid
 date: "2022-01-11"
 description: Creating responsive layouts for desktop, tablet and mobile devices can be difficult, but CSS grid can help.
 slug: responsive-layouts-with-css-grid
-tags: [brain-kosmos, frontend, responsive-design, css, css-grid]
+tags: [frontend, responsive-design, css, css-grid]
 ---
 
 There are many ways to display content on a screen, and depending on which device you use, it can affect how good it looks. On devices in landscape mode, the width offers extra real estate for your content, but not without cost. Extra width does not mean extra line length, as it would be rather difficult to read the next line by darting your eyes from one end of the screen to the other. [^1]

@@ -24,6 +24,8 @@ const BlogPostTemplate = ({ data, location }) => {
   const goatUrl = `https://${goatId}.goatcounter.com/counter/${post.fields.slug}.json`;
   const [views, setViews] = React.useState(-1);
   
+  const tags = post.frontmatter.tags;
+
   React.useEffect(() => {
     document.addEventListener('themeChanged', e => {
       if(document.readyState === 'complete')
@@ -55,6 +57,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <div>
             <p>{post.frontmatter.date}</p>
+            <ul ariaLabel="Tags: " className="tag-list">
+              {tags.map(tag => (
+                <li key={tag} className="tag">
+                  <Link to={`/tags/${tag}`} className="tag-link">#{tag}</Link>
+                </li>
+              ))}
+            </ul>
             <p style={{ fontSize: '1rem' }}>
               <b><BsCalendar3 className="icon" /> Last Updated</b> &mdash; {post.fields.lastUpdated}
               <br />
@@ -130,6 +139,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
       fields {
         lastUpdated(formatString: "MMMM DD, YYYY")
