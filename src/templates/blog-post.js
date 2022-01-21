@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import { BsCalendar3 } from "react-icons/bs"
-import { FaEye } from "react-icons/fa"
+import { FaEye, FaTags } from "react-icons/fa"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -57,18 +57,19 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <div>
             <p>{post.frontmatter.date}</p>
-            <ul ariaLabel="Tags: " className="tag-list">
+            <p style={{ fontSize: '1rem', margin: 0 }}>
+              <b><BsCalendar3 className="icon" /> Last Updated</b> &mdash; {post.fields.lastUpdated}
+              <br />
+              {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views.toLocaleString('en-US')} views</>}
+            </p>
+            <ul className="tag-list">
+              <b><FaTags className="icon" /> Tags</b> &mdash;{' '}
               {tags.map(tag => (
                 <li key={tag} className="tag">
                   <Link to={`/tags/${tag}`} className="tag-link">#{tag}</Link>
                 </li>
               ))}
             </ul>
-            <p style={{ fontSize: '1rem' }}>
-              <b><BsCalendar3 className="icon" /> Last Updated</b> &mdash; {post.fields.lastUpdated}
-              <br />
-              {views < 0 ? null : <><b><FaEye className="icon" /> Views</b> &mdash; {views.toLocaleString('en-US')} views</>}
-            </p>
           </div>
         </header>
         <section

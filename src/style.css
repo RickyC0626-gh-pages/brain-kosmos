@@ -360,20 +360,20 @@ a:focus {
 }
 
 .blog-post .tag-list:before {
-  content: attr(ariaLabel);
   font-size: var(--fontSize-1);
   font-weight: var(--fontWeight-bold);
 }
 
 .blog-post .tag-list {
   line-height: var(--spacing-8);
-  hyphens: auto;
+  font-family: var(--font-heading);
 }
 
 .blog-post .tag {
   display: inline;
   list-style: none;
   font-size: var(--fontSize-0);
+  font-weight: var(--fontWeight-semibold);
   border: 1px solid var(--color-accent);
   padding: var(--spacing-1) var(--spacing-2);
   margin-right: var(--spacing-1);
